@@ -2,8 +2,8 @@ import { createWebHistory, createRouter } from "vue-router";
 import Login from '../pages/Login.vue';
 import Register from '../pages/Register.vue';
 import Home from '../pages/Home.vue';
-import Men from '../pages/Men.vue'
 import About from '../pages/About.vue';
+import Item from '../pages/Item.vue';
 import Cart from '../pages/Cart.vue';
 import Checkout from '../pages/Checkout.vue';
 import Thank from '../pages/Thank.vue';
@@ -24,15 +24,16 @@ const routes = [{
         component: Cart,
     },
     {
+        path: "/item",
+        name: "Item",
+        component: Item,
+    },
+    {
         path: "/login",
         name: "Login",
         component: Login,
     },
-    {
-        path: "/men",
-        name: "Men",
-        component: Men,
-    },
+
     {
         path: "/register",
         name: "Register",
@@ -66,7 +67,6 @@ const routes = [{
     {
         path: '/:pathMatch(.*)*',
         component: Home,
-        // https://stackoverflow.com/questions/68504803/how-can-i-make-a-catch-all-other-route-in-vue-router-also-catch-the-url-when-p
     },
     {
         path: "/",

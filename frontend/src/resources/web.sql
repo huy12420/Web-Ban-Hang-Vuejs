@@ -1,20 +1,20 @@
--- database name: "db_restaurant"
+-- database name: "web"
 
-CREATE TABLE food( 
-    food_id INT(11) PRIMARY KEY AUTO_INCREMENT, 
-    food_name VARCHAR(255), 
-    food_star VARCHAR(255),
-    food_vote VARCHAR(255),
-    food_price VARCHAR(255),
-    food_discount VARCHAR(255),
-    food_desc VARCHAR(255),
-    food_status VARCHAR(255),
-    food_type VARCHAR(255),
-    food_category VARCHAR(255),
-    food_src VARCHAR(255)
+CREATE TABLE item( 
+    item_id INT(11) PRIMARY KEY AUTO_INCREMENT, 
+    item_name VARCHAR(255), 
+    item_star VARCHAR(255),
+    item_vote VARCHAR(255),
+    item_price VARCHAR(255),
+    item_discount VARCHAR(255),
+    item_desc VARCHAR(255),
+    item_status VARCHAR(255),
+    item_type VARCHAR(255),
+    item_category VARCHAR(255),
+    item_src VARCHAR(255)
 ) ENGINE=INNODB;
 
-INSERT INTO food (food_name, food_star, food_vote, food_price, food_discount, food_desc, food_status, food_type, food_category, food_src)
+INSERT INTO item (item_name, item_star, item_vote, item_price, item_discount, item_desc, item_status, item_type, item_category, item_src)
 VALUES("carne asada tacos","4.5", "999", "12.00", "0.00", "03 pieces per serving", "best seller", "meat", "taco", "taco/taco-1.png"),
 ("shrimp tacos","4.5", "999", "15.00", "3.00", "03 pieces per serving", "best seller", "meat", "taco", "taco/taco-2.png"),
 ("barbacoa tacos","4.5","500","12.00","0.00","03 pieces per serving","best seller","meat","taco","taco/taco-3.png"),
@@ -72,29 +72,17 @@ CREATE TABLE user(
 
 CREATE TABLE cart (
   user_id INT,
-  food_id INT,
+  item_id INT,
   item_qty INT,
-  primary key (user_id, food_id)
+  primary key (user_id, item_id)
 );
-
-
-CREATE TABLE booktable( 
-    book_id INT(11) PRIMARY KEY AUTO_INCREMENT, 
-    book_name VARCHAR(255), 
-    book_phone VARCHAR(255),
-    book_people INT,
-    book_tables INT,
-    user_id INT,
-    book_when VARCHAR(255),
-    book_note TEXT
-) ENGINE=INNODB;
 
 
 CREATE TABLE billdetails (
   bill_id INT,
-  food_id INT,
+  item_id INT,
   item_qty INT,
-  primary key (bill_id, food_id)
+  primary key (bill_id, item_id)
 );
 
 CREATE TABLE billstatus (

@@ -4,14 +4,14 @@ import axios from "axios"
 const store = createStore({
     state() {
         return {
-            allFoods: [],
+            allItems: [],
             user: undefined,
             admin: undefined,
         }
     },
     mutations: {
-        setFoodsData(state, payload) {
-            state.allFoods = payload;
+        setItemsData(state, payload) {
+            state.allItems = payload;
         },
         setUser(state, payload) {
             state.user = payload;
@@ -21,10 +21,10 @@ const store = createStore({
         }
     },
     actions: {
-        async getFoodsData(context) {
-            await axios.get('/foods')
+        async getItemsData(context) {
+            await axios.get('/items')
                 .then(function(response) {
-                    context.commit("setFoodsData", response.data);
+                    context.commit("setItemsData", response.data);
                 })
                 .catch(function(error) {
                     console.log(error);

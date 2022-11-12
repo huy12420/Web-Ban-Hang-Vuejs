@@ -1,13 +1,13 @@
 // import express 
 import express from "express";
-// import functions from controller 
+// import functions from controller
 import {
-    showFoods,
-    showFoodById,
-    createFood,
-    updateFood,
-    deleteFood,
-} from "../controllers/food.js";
+    showItems,
+    showItemById,
+    createItem,
+    // updateItem,
+    // deleteItem,
+} from "../controllers/item.js";
 
 import {
     showAUser,
@@ -41,21 +41,21 @@ import {
 // init express router
 const router = express.Router();
 
-////////////////////////// FOOD ////////////////////////////////
-// get all Food
-router.get("/api/foods", showFoods);
+////////////////////////// Items ////////////////////////////////
+// get all Item
+router.get("/api/items", showItems);
 
-// get single Food 
-router.get("/api/foods/:id", showFoodById);
+// get single Item 
+router.get("/api/items/:id", showItemById);
 
-// create Food
-router.post("/api/foods", createFood);
+// create Item
+router.post("/api/items", createItem);
 
-// update Food 
-router.put("/api/foods/:id", updateFood);
+//update Item
+// router.put("/api/items/:id", updateItem);
 
-// delete Food
-router.delete("/api/foods/:id", deleteFood);
+// delete Item
+router.delete("/api/items/:id", deleteItem);
 
 
 
@@ -73,26 +73,19 @@ router.post("/api/users/", createAccount);
 router.post("/api/cartItem", addItems);
 
 // get a item in cart
-router.get("/api/cartItem/:user_id/:food_id", getItem);
+router.get("/api/cartItem/:user_id/:item_id", getItem);
 
 // get all items by user id
 router.get("/api/cartItem/:id", allItems);
 
 // update item qty
-router.put("/api/cartItem/", updateItem);
+// router.put("/api/cartItem/", updateItem);
 
 // delete a item in cart
-router.delete("/api/cartItem/:user_id/:food_id", deleteItem);
+router.delete("/api/cartItem/:user_id/:item_id", deleteItem);
 
 // delete all items in cart
 router.delete("/api/cartItem/:id", deleteItems);
-
-
-
-////////////////////////// Booking ////////////////////////////////
-
-
-
 
 ////////////////////////// Bill Details ////////////////////////////////
 router.post("/api/billdetails", createBillDetails);

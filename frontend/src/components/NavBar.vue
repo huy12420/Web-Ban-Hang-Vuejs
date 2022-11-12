@@ -7,7 +7,7 @@
             <router-link @click="scrollToTop()" to="/">home</router-link>
             <router-link @click="scrollToTop()" to="/about">about</router-link>
             <router-link @click="scrollToTop()" to="/women">Women</router-link>
-            <router-link @click="scrollToTop()" to="/men">Men</router-link>
+            <router-link @click="scrollToTop()" to="/item">Shop</router-link>
         </nav>
 
         <div class="icons">
