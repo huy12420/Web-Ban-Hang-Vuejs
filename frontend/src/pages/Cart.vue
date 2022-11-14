@@ -13,66 +13,52 @@
                         <div class="box">
                             <div class="box-title item-total row">
                                 <h3>
-                                    <p style="font-size: 15px;">{{ filterFoods.length.toString() }}
-                                        <span v-if="filterFoods.length < 2">item</span>
-                                        <span v-else>items</span>
+                                    <p style="font-size: 15px;">
+                                        <span>item</span>
+                                        <span></span>
                                     </p>in your cart
                                 </h3>
                             </div>
 
-                            <div v-if="!filterFoods.length">
-                                <div class="box-content row no-food">
-                                    <div class="content">
-                                        <h2 style="color: black;">You do not have any items in your cart, go shop
-                                            now!</h2>
-                                    </div>
-                                   <!-- <div></div> -->
-                                </div>
-                            </div>
-                            <div v-else>
-                                <div v-for="(f, index) in filterFoods" :key="index">
-                                    <div class="box-content row">
+                            <div>
+                                <div>
+                                    <div class="box-content row" v-for="item in $store.state.cart" :key="item.item_id">
                                         <div class="image-box col-sm-3" style="padding-left: 0;">
-                                            <img :src="require(`../assets/images/${f.food_src}`)" alt=""
+                                            <img v-bind:src="'http://localhost:8081/asset/' + item.item_src" alt=""
                                                 class="cart-product-img" />
                                         </div>
 
                                         <div class="desc col-sm-4">
-                                            <h2 class="item-name">{{ f.food_name }}</h2>
+                                            <h2 class="item-name"></h2>
                                             <div class="item-desc">
                                                 <b>Description</b>
-                                                <p>{{ f.food_desc }}</p>
+                                                <p>{{item.item_desc}}</p>
                                             </div>
-                                            <button class="btn remove-btn" @click="removeBtn(index)"><i
-                                                    class="fa fa-trash"></i>Remove
+                                            <button class="btn remove-btn" @click="removeFromCart(item)"><i class="fa fa-trash"></i>Remove
                                                 item</button>
                                         </div>
 
                                         <div class="item-price col-sm-1">
-                                            <span class="sale-price">${{ parseFloat(f.food_price) -
-                                                    parseFloat(f.food_discount)
-                                            }}</span>
-                                            <p class="text-muted first-price"
-                                                v-if="parseFloat(f.food_discount) != 0.00">
-                                                ${{
-                                                        parseFloat(f.food_price)
-                                                }}
-
-                                            </p>
+                                            <span class="sale-price">{{item.item_price}}$
+                                            </span>
                                         </div>
 
                                         <div class="item-qty col-sm-2 d-inline">
                                             <label for="iQuantity"
                                                 style="font-size: 12px; padding-right: 2px;">Quantity:</label>
-                                            <input type="number" id="iQuantity" class="form-control item-quantity"
-                                                :value="itemQuantity[index]" min="1" max="1000"
-                                                @change="onQtyChange($event, index)">
+                                            <input type="number" min="1" id="iQuantity" class="form-control item-quantity" :value="item.item_quantity">
+                                            <button class="btn btn-link px-2" @click="decrementQuentity(item)">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                                <button class="btn btn-link px-2" @click="incrementQuentity(item)">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
                                         </div>
 
                                         <div class="cal-total col-sm-2">
-                                            <h4 class="item-total">${{
-                                                    calculateItemPrice(index)
-                                            }}
+                                            <h4 class="item-total">{{
+                                                item.item_total
+                                            }}$
                                             </h4>
                                         </div>
                                     </div>
@@ -83,10 +69,9 @@
                         </div>
 
                         <div class="box-content row">
-                            <router-link to="/menu" class="btn shop-btn"><i class="fa fa-arrow-left"></i>Continue
-                                shopping</router-link>
-                            <button class="btn check-out-btn" style="margin-left: 10px;"
-                                :disabled="filterFoods.length ? false : true" @click="checkOutBtn()"><i
+                            <!-- <router-link to="/menu" class="btn shop-btn"><i class="fa fa-arrow-left"></i>Continue
+                                shopping</router-link> -->
+                            <button class="btn check-out-btn" style="margin-left: 10px;"><i
                                     class="fa fa fa-shopping-cart"></i>Checkout</button>
                         </div>
                     </div>
@@ -100,25 +85,16 @@
 
                             <div class="box-content">
                                 <span>Summary</span>
-                                <h3 class="font-bold total-first-price">${{ calculateSummaryPrice()[0] }}</h3>
-
-                                <span>Discount</span>
-                                <h3 class="font-bold total-discount">${{ calculateSummaryPrice()[1] }}</h3>
-
-                                <span>Delivery fee</span>
-                                <h3 class="font-bold total-delivery">${{ calculateSummaryPrice()[2] }}</h3>
 
                                 <hr />
 
                                 <span>Total</span>
-                                <h2 class="font-bold total-sale">${{ calculateSummaryPrice()[3] }}</h2>
+                                <h2 class="font-bold total-sale"> {{totalPrice}}</h2>
 
                                 <div class="btn-group">
-                                    <button class="btn check-out-btn" :disabled="filterFoods.length ? false : true"
-                                        @click="checkOutBtn()"><i class="fa fa-shopping-cart"></i>
+                                    <button class="btn check-out-btn"><i class="fa fa-shopping-cart"></i>
                                         Checkout</button>
-                                    <button class="btn cancel-btn" @click="cancelBtn()"
-                                        :disabled="filterFoods.length ? false : true">
+                                    <button class="btn cancel-btn" @click="resetCart()">
                                         Cancel</button>
                                 </div>
                             </div>
@@ -141,122 +117,72 @@
         </div>
     </div>
 </template>
-
 <script>
-import axios from "axios";
-import { mapState } from "vuex";
+
+
 export default {
     name: "Cart",
-
     data() {
         return {
-            cartItem: [],
-            itemQuantity: [],
+            cartData: {
+                uid: '',
+                user_name: '',
+                user_address: '',
+                user_phone: '',
+                created_date: '',
+                cart: '',
+                total: 0,
+                valid: false,
+            },
         };
     },
-
-    created() {
-        this.getAllCartItem();
-    },
-
     computed: {
-        ...mapState(["allFoods", "user"]),
+        totalPrice() {
+            let total = 0;
 
-        filterFoods: function () {
-            return this.allFoods.filter(
-                (f) => this.matchID(f, this.cartItem)
-            );
+            for (let item of this.$store.state.cart) {
+                total += parseInt(item.item_total);
+            }
+            return total;
         },
+        
     },
-
     methods: {
-        matchID: function (food, cartArray) {
-            let temp = "";
-            cartArray.forEach(element => {
-                if (parseInt(food.food_id) == element) {
-                    temp = food
-                }
-            });
-            return temp
-        },
-
-        calculateItemPrice: function (index) {
-            return ((parseInt(this.filterFoods[index].food_price) - parseInt(this.filterFoods[index].food_discount)) * this.itemQuantity[index]).toString()
-        },
-
-        calculateSummaryPrice: function () {
-            let subtotal = 0;
-            let discount = 0;
-            let delivery = 15;
-            let i = 0;
-            while (i < this.itemQuantity.length) {
-                subtotal = subtotal + parseInt(this.filterFoods[i].food_price) * this.itemQuantity[i]
-                discount = discount + parseInt(this.filterFoods[i].food_discount) * this.itemQuantity[i]
-                i = i + 1
+        async CheckOutProducts() {
+            try {
+                console.log("hehe")
+            } catch (error) {
+                alert(error);
             }
-            if (!this.filterFoods.length) {
-                delivery = 0
-            }
-            let total = subtotal - discount + delivery;
-            return [subtotal, discount, delivery, total];
         },
+        addToCart(item) {
+            this.$store.commit('addToCart', item);
 
-        async onQtyChange(e, i) {
-            if (e.target.value < 1) {
-                e.target.value = 1
-                this.itemQuantity[i] = 1
-            } else {
-                this.itemQuantity[i] = e.target.value;
-            }
-
-            let data = {
-                user_id: parseInt(this.user.user_id),
-                food_id: parseInt(this.cartItem[i]),
-                item_qty: this.itemQuantity[i]
-            };
-            await axios.put("/cartItem/", data)
+            console.log(item);
         },
-
-        async cancelBtn() {
-            await axios.delete("/cartItem/" + this.user.user_id);
-
-            this.cartItem = [];
-            this.itemQuantity = [];
+        removeFromCart(item) {
+            this.$store.commit('removeFromCart', item);
         },
-
-        checkOutBtn: function () {
-            this.$router.push("/checkout");
+        decrementQuentity(item) {
+            this.$store.commit('decrementQuentity', item);
         },
-
-        async removeBtn(index) {
-            await axios.delete("/cartItem/" + this.user.user_id + "/" + this.cartItem[index]);
-
-            this.cartItem.splice(index, 1);
-            this.itemQuantity.splice(index, 1);
+        incrementQuentity(item) {
+            this.$store.commit('incrementQuentity', item);
         },
-
-        async getAllCartItem() {
-            if (this.user) {
-                let existItem = await axios.get('/cartItem/' + this.user.user_id);
-                existItem.data.forEach(element => {
-                    this.cartItem.push(element.food_id);
-                    this.itemQuantity.push(element.item_qty);
-                });
-            }
+        resetCart() {
+            this.$store.commit('resetCart');
         }
-
-
+    },
+    created(){
+        console.log(this.$store.state.cart)
     }
-
 }
 </script>
-
-
 <style scoped>
 .shopping-cart-section {
     background: #fff;
     padding: 2rem 9%;
-    
+
 }
 
 .item-name {
@@ -344,13 +270,13 @@ export default {
     padding-right: 5px;
 }
 
-.no-food {
+.no-item {
     text-align: center;
     justify-content: center;
     display: block;
 }
 
-.no-food .image img {
+.no-item .image img {
     width: 200px;
     height: 200px;
 }

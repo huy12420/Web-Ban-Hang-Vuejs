@@ -14,7 +14,7 @@ export const showItems = (req, res) => {
         if (err) {
             res.send(err);
         } else {
-            res.json(results);
+            res.json(results)
         }
     });
 };

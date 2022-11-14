@@ -2,81 +2,63 @@
     <div class="row">
         <div id="content" class="col-sm-12">
             <h3 class="title"> Men </h3>
-            <div class="row-item">
-
-
-
-                <div class="product-grid col-lg-2">
-
+            <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3" >
+                <div class="product-grid col-lg-2" v-for="item in BindingItems" :key="item.item_id">
                     <div class="thumb">
                         <div class="image">
-                            <img href="#" src="../assets/images/taco/item1.jpg" class="img-responsive"> >
+                            <img href="#"  v-bind:src="'http://localhost:8081/asset/' + item.item_src"  class="img-responsive"> >
                         </div>
                         <div class="caption">
                             <h4>
-                                <a href="#" class="product-name"> Gucci bag </a>
+                                <a href="#" class="product-name">{{ item.item_name }}</a>
                             </h4>
-                            <p class="price"> 3000$ </p>
+                            <p class="price">{{ item.item_price }}</p>
                         </div>
                         <div class="button-card">
-                            <a class="btn" > ADD TO CART </a>
+                            <button @click="
+                                        addToCart({item_quantity:1, item_total: item.item_price, ...item})
+                                    " class="btn" > ADD TO CART </button>
                         </div>
-
-
                     </div>
                 </div>
-                <div class="product-grid col-lg-2">
-
-                    <div class="thumb">
-                        <div class="image">
-                            <img href="#" src="../assets/images/taco/item1.jpg" class="img-responsive"> >
-                        </div>
-                        <div class="caption">
-                            <h4>
-                                <a href="#" class="product-name"> Gucci bag </a>
-                            </h4>
-                            <p class="price"> 3000$ </p>
-                        </div>
-                        <div class="button-card">
-                            <a class="btn"> ADD TO CART </a>
-                        </div>
-
-
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-
-
             </div>
-
-
-
-
         </div>
-
-
     </div>
-
 </template>
 
 <script>
-
+import axios from "axios";
 
 export default {
     name: "Item",
-    return: { 
-        
+    data() {
+        return {
+            BindingItems: [],
+
+        };
+    },
+
+    created() {
+        this.getProducts();
+    },
+
+    methods: {
+        // Get All Products
+        async getProducts() {
+            try {
+                const promise1 = (new axios.get('http://localhost:8081/api/items'));
+                promise1.then((value) => {
+                    this.BindingItems = value.data;
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        addToCart(item) {
+            this.$store.commit('addToCart', item);
+        },
 
     },
-    method: { 
-    }
 
 }
 </script>
@@ -85,12 +67,13 @@ export default {
 <style scoped lang="scss">
 .row {
     padding-top: 50px;
+    padding: 10px;
 }
 
 
 #content {
     min-height: 400px;
-    
+
 }
 
 .title {
@@ -113,7 +96,7 @@ export default {
     margin-bottom: 20px;
     border: 1px solid transparent;
     border-radius: 3px;
-    
+
 
 }
 
@@ -144,6 +127,7 @@ export default {
 
 .button-card {
     position: absolute;
+    color: white;
     bottom: 0;
     left: calc(50% - 50px);
 }

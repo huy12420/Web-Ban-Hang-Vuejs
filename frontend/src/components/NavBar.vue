@@ -187,7 +187,7 @@ export default {
 }
 
 .header .icons .account .drop-down-select.active a:hover {
-    background-color:   black;
+    background-color: black;
     color: white;
 }
 
