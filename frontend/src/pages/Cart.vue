@@ -32,32 +32,34 @@
                                             <h2 class="item-name"></h2>
                                             <div class="item-desc">
                                                 <b>Description</b>
-                                                <p>{{item.item_desc}}</p>
+                                                <p>{{ item.item_desc }}</p>
                                             </div>
-                                            <button class="btn remove-btn" @click="DeleteCartItem(item)"><i class="fa fa-trash"></i>Remove
+                                            <button class="btn remove-btn" @click="DeleteCartItem(item)"><i
+                                                    class="fa fa-trash"></i>Remove
                                                 item</button>
                                         </div>
 
                                         <div class="item-price col-sm-1">
-                                            <span class="sale-price">{{item.item_price}}$
+                                            <span class="sale-price">{{ item.item_price }}$
                                             </span>
                                         </div>
 
                                         <div class="item-qty col-sm-2 d-inline">
                                             <label for="iQuantity"
                                                 style="font-size: 12px; padding-right: 2px;">Quantity:</label>
-                                            <input type="number" min="1" id="iQuantity" class="form-control item-quantity" :value="item.item_quantity">
+                                            <input type="number" min="1" id="iQuantity"
+                                                class="form-control item-quantity" :value="item.item_quantity">
                                             <button class="btn btn-link px-2" @click="MinusQuantity(item)">
-                                                    <i class="fas fa-minus"></i>
-                                                </button>
-                                                <button class="btn btn-link px-2" @click="PlusQuantity(item)">
-                                                    <i class="fas fa-plus"></i>
-                                                </button>
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <button class="btn btn-link px-2" @click="PlusQuantity(item)">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
                                         </div>
 
                                         <div class="cal-total col-sm-2">
                                             <h4 class="item-total">{{
-                                                item.item_total
+                                                    item.item_total
                                             }}$
                                             </h4>
                                         </div>
@@ -66,12 +68,6 @@
                             </div>
 
 
-                        </div>
-
-                        <div class="box-content row">
-                            <button class="btn check-out-btn" style="margin-left: 10px;"><i
-                                    class="fa fa fa-shopping-cart"></i>Checkout</button>
-                              
                         </div>
                     </div>
 
@@ -88,11 +84,12 @@
                                 <hr />
 
                                 <span>Total</span>
-                                <h2 class="font-bold total-sale"> {{totalPrice}}</h2>
+                                <h2 class="font-bold total-sale"> {{ totalPrice }}</h2>
 
                                 <div class="btn-group">
-                                    <div class="btn check-out-btn"><i class="fa fa-shopping-cart"></i>                                       
-                                        <router-link class="btn check-out-btn"  @click="scrollToTop()" to="/thank">Checkout</router-link>
+                                    <div class="btn check-out-btn"><i class="fa fa-shopping-cart"></i>
+                                        <router-link class="btn check-out-btn" @click="scrollToTop()" to="/myorder">
+                                            Checkout</router-link>
                                     </div>
                                     <button class="btn cancel-btn" @click="CancelBtn()">
                                         Cancel</button>
@@ -145,7 +142,7 @@ export default {
             }
             return total;
         },
-        
+
     },
     methods: {
         async CheckOutProducts() {
@@ -173,7 +170,7 @@ export default {
             this.$store.commit('CancelBtn');
         }
     },
-    created(){
+    created() {
         console.log(this.$store.state.cart)
     }
 }

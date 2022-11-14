@@ -30,7 +30,7 @@
             <div v-else class="fas fa-user account" style="background: #f38609;color: white;" @click="showLog">
                 <ul class="drop-down-select">
                     <li>
-                        <router-link @click="scrollToTop()" to="/myorder">my orders</router-link>
+                        <!-- <router-link @click="scrollToTop()" to="/myorder">my orders</router-link> -->
                     </li>
                     <li>
                         <router-link @click="handleLogout" to="/">logout</router-link>

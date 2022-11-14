@@ -4,23 +4,23 @@
             <div>
                 <div class="card-head d-flex flex-wrap flex-sm-nowrap justify-content-between">
                     <div>
-                        <span>Order No - </span>
+                        <span>Your Oders </span>
                         <span></span>
                     </div>
-                    <div class="btn"> 
-                     <button>  <router-link  @click="scrollToTop()" to="/thank"> Complete Payment</router-link></button>
+                    <div class="btn">
+                        <router-link class="btn check-out-btn" @click="scrollToTop()" to="/thank">Checkout</router-link>
                     </div>
                 </div>
 
                 <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between card-summary">
-                    <div class="w-100 text-center py-1 px-2"><span> Address </span> <input type="text">
+                    <div class="w-100 text-center py-1 px-2"><span><b>Address</b> </span> <input type="text">
                     </div>
-                    <div class="w-100 text-center py-1 px-2"><span> Phone Number </span> <input type="number">
+                    <div class="w-100 text-center py-1 px-2"><span> <b>Phone Number</b> </span> <input type="number">
                     </div>
-                    <div class="w-100 text-center py-1 px-2"><span> Name </span> <input type="text"> </div>
+                    <div class="w-100 text-center py-1 px-2"><span> <b>Name </b></span> <input type="text"> </div>
                 </div>
-             
-                
+
+
             </div>
         </div>
 
@@ -41,8 +41,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .my-order-container {
     padding: 2rem 9%;
     background: #fff;
@@ -55,6 +53,8 @@ export default {
 
 .my-order-cards {
     margin-bottom: 2rem;
+    padding: 10px;
+    height: 200px;
 }
 
 
@@ -89,98 +89,22 @@ export default {
     padding: 12px 10px;
     background: #eee;
     font-size: 14px;
+    padding: 10px;
+    height: 200px;
 }
 
-.steps .step {
-    display: block;
-    width: 100%;
-    margin-bottom: 35px;
-    text-align: center
+.card-summary b {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 10px;
 }
 
-.steps .step .step-icon-wrap {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 80px;
-    text-align: center
+.card-summary input {
+    border-radius: 10px;
+    padding: 7px;
+
 }
 
-.steps .step .step-icon-wrap::before,
-.steps .step .step-icon-wrap::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    width: 50%;
-    height: 3px;
-    margin-top: -1px;
-    background-color: #e1e7ec;
-    content: '';
-    z-index: 1
-}
-
-.steps .step .step-icon-wrap::before {
-    left: 0
-}
-
-.steps .step .step-icon-wrap::after {
-    right: 0
-}
-
-.steps .step .step-icon {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-    border: 1px solid #e1e7ec;
-    border-radius: 50%;
-    background-color: #f5f5f5;
-    color: #374250;
-    font-size: 38px;
-    line-height: 81px;
-    z-index: 5
-}
-
-.steps .step .step-title {
-    margin-top: 16px;
-    margin-bottom: 0;
-    color: #606975;
-    font-size: 14px;
-    font-weight: 500
-}
-
-.steps .step:first-child .step-icon-wrap::before {
-    display: none
-}
-
-.steps .step:last-child .step-icon-wrap::after {
-    display: none
-}
-
-.steps .step.completed .step-icon-wrap::before,
-.steps .step.completed .step-icon-wrap::after {
-    background-color: #0da9ef
-}
-
-.steps .step.completed .step-icon {
-    border-color: #0da9ef;
-    background-color: #0da9ef;
-    color: #fff
-}
-
-.no-food {
-    text-align: center;
-    justify-content: center;
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-}
-
-.no-food a {
-    margin-top: 20px;
-    margin-left: -10px;
-}
 
 @media (max-width: 320px) {
     .my-order-container {
@@ -191,9 +115,7 @@ export default {
         font-size: 14px;
     }
 
-    .no-food .content h2 {
-        font-size: 14px;
-    }
+
 
 
 }
@@ -212,7 +134,6 @@ export default {
         margin-top: 20px;
     }
 
-    .no-food div img {}
 }
 
 @media (max-width: 768px) {

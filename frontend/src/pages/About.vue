@@ -66,9 +66,9 @@
                 irrelevant, with a lot of talk about who would replace her. The brand surprised their audience when, in
                 2015, it was announced that Alessandro Michele would take over as creative director of the brand.
             </p>
-            <button> 
-                <i> <b> The Inheritance Of Legacy </b></i>
-            </button>
+         
+              <p>  <i> <b> The Inheritance Of Legacy </b></i></p>
+          
             <p>
                 Though Michele had worked for Gucci in various roles for 12 years, he was still relatively unknown as a
                 designer, and it was not clear in what direction he would take the brand. However, Michele’s unique

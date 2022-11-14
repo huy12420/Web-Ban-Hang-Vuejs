@@ -1,6 +1,6 @@
 // using nodemon so that you do not need to type node index.js every time new code saved
 // import body-parser - helps to parse the request and create the req.body object
-import bodyParser from "body-parser";
+// import bodyParser from "body-parser";
 import express from "express";
 
 // import cors - provides Express middleware to enable CORS with various options, connect frontend
@@ -26,7 +26,6 @@ const app = express();
 app.use(cors());
 // use express json
 app.use('/asset', express.static(path.join(__dirname + '/asset')));
-console.log(path.join(__dirname + '/asset'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
