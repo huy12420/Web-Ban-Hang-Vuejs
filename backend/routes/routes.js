@@ -17,26 +17,12 @@ import {
 import {
     addItems,
     getItem,
-    updateItem,
+    // updateItem,
     allItems,
     deleteItem,
     deleteItems
 } from "../controllers/cart.js";
-import {
-    createBillDetails,
-    getBillDetailsById
-} from "../controllers/billdetails.js";
 
-import {
-    showNewestStatusId,
-    createBillStatus,
-    getAllBillsByUser,
-    getAllBillsByBill,
-    getAllBills,
-    updateBillStatus,
-    updateBillPaid,
-    cancelBillStatus
-} from "../controllers/billstatus.js";
 
 // init express router
 const router = express.Router();
@@ -86,26 +72,5 @@ router.delete("/api/cartItem/:user_id/:item_id", deleteItem);
 
 // delete all items in cart
 router.delete("/api/cartItem/:id", deleteItems);
-
-////////////////////////// Bill Details ////////////////////////////////
-router.post("/api/billdetails", createBillDetails);
-router.get("/api/billdetails/:id", getBillDetailsById);
-
-
-
-////////////////////////// Bill Status ////////////////////////////////
-router.get("/api/billstatus/new", showNewestStatusId);
-router.post("/api/billstatus", createBillStatus);
-router.get("/api/billstatus/user/:id", getAllBillsByUser);
-router.get("/api/billstatus/bill/:id", getAllBillsByBill);
-router.get("/api/billstatus", getAllBills);
-router.put("/api/billstatus/:id", updateBillStatus);
-router.put("/api/billstatus/paid/:id", updateBillPaid);
-router.put("/api/billstatus/cancel/:id", cancelBillStatus);
-
-
-
-
-
 // export default router
 export default router;

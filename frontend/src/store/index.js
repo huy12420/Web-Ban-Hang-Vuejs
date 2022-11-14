@@ -36,7 +36,7 @@ const store = createStore({
             }
             this.commit('saveCart');
         },
-        removeFromCart(state, item) {
+        DeleteCartItem(state, item) {
             let index = state.cart.indexOf(item);
 
             if (index > -1) {
@@ -48,7 +48,7 @@ const store = createStore({
             }
             this.commit('saveCart');
         },
-        decrementQuentity(state, item) {
+        MinusQuantity(state, item) {
 
             let found = state.cart.find(product => product.item_id == item.item_id);
 
@@ -58,7 +58,7 @@ const store = createStore({
             }
             this.commit('saveCart');
         },
-        incrementQuentity(state, item) {
+        PlusQuantity(state, item) {
 
             let found = state.cart.find(product => product.item_id == item.item_id);
 
@@ -72,7 +72,7 @@ const store = createStore({
             localStorage.setItem('cart', JSON.stringify(state.cart));
             localStorage.setItem('count', state.count);
         },
-        resetCart(state) {
+        CancelBtn(state) {
             state.cart = [],
                 state.count = 0,
                 localStorage.setItem('cart', JSON.stringify(state.cart));

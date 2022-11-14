@@ -13,8 +13,7 @@
 
             <div class="box">
                 <h3>our catalogue</h3>
-                <router-link @click="scrollToTop()" to="/men"><i class="fas fa-arrow-right"></i> Men Clothing</router-link>
-                <router-link @click="scrollToTop()" to="/women"><i class="fas fa-arrow-right"></i> Women Clothing</router-link>
+                <router-link @click="scrollToTop()" to="/item"><i class="fas fa-arrow-right"></i> Store</router-link>
             </div>
 
             <div class="box">

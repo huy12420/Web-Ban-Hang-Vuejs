@@ -1,7 +1,6 @@
 <template>
     <div class="row">
         <div id="content" class="col-sm-12">
-            <h3 class="title"> Men </h3>
             <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3" >
                 <div class="product-grid col-lg-2" v-for="item in BindingItems" :key="item.item_id">
                     <div class="thumb">
@@ -68,6 +67,7 @@ export default {
 .row {
     padding-top: 50px;
     padding: 10px;
+    padding-bottom: 20px;
 }
 
 
@@ -108,6 +108,8 @@ export default {
 .product-grid .thumb img {
     object-fit: cover;
     height: 200px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .product-grid .thumb h4 a {
@@ -129,7 +131,8 @@ export default {
     position: absolute;
     color: white;
     bottom: 0;
-    left: calc(50% - 50px);
+    left: calc(50% - 76px);
+    padding-top: 10px;
 }
 
 .button-card a {

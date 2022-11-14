@@ -6,8 +6,7 @@
         <nav class="navbar">
             <router-link @click="scrollToTop()" to="/">home</router-link>
             <router-link @click="scrollToTop()" to="/about">about</router-link>
-            <router-link @click="scrollToTop()" to="/women">Women</router-link>
-            <router-link @click="scrollToTop()" to="/item">Shop</router-link>
+            <router-link @click="scrollToTop()" to="/item">Store</router-link>
         </nav>
 
         <div class="icons">

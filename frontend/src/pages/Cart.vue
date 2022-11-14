@@ -34,7 +34,7 @@
                                                 <b>Description</b>
                                                 <p>{{item.item_desc}}</p>
                                             </div>
-                                            <button class="btn remove-btn" @click="removeFromCart(item)"><i class="fa fa-trash"></i>Remove
+                                            <button class="btn remove-btn" @click="DeleteCartItem(item)"><i class="fa fa-trash"></i>Remove
                                                 item</button>
                                         </div>
 
@@ -47,10 +47,10 @@
                                             <label for="iQuantity"
                                                 style="font-size: 12px; padding-right: 2px;">Quantity:</label>
                                             <input type="number" min="1" id="iQuantity" class="form-control item-quantity" :value="item.item_quantity">
-                                            <button class="btn btn-link px-2" @click="decrementQuentity(item)">
+                                            <button class="btn btn-link px-2" @click="MinusQuantity(item)">
                                                     <i class="fas fa-minus"></i>
                                                 </button>
-                                                <button class="btn btn-link px-2" @click="incrementQuentity(item)">
+                                                <button class="btn btn-link px-2" @click="PlusQuantity(item)">
                                                     <i class="fas fa-plus"></i>
                                                 </button>
                                         </div>
@@ -69,10 +69,9 @@
                         </div>
 
                         <div class="box-content row">
-                            <!-- <router-link to="/menu" class="btn shop-btn"><i class="fa fa-arrow-left"></i>Continue
-                                shopping</router-link> -->
                             <button class="btn check-out-btn" style="margin-left: 10px;"><i
                                     class="fa fa fa-shopping-cart"></i>Checkout</button>
+                              
                         </div>
                     </div>
 
@@ -92,9 +91,10 @@
                                 <h2 class="font-bold total-sale"> {{totalPrice}}</h2>
 
                                 <div class="btn-group">
-                                    <button class="btn check-out-btn"><i class="fa fa-shopping-cart"></i>
-                                        Checkout</button>
-                                    <button class="btn cancel-btn" @click="resetCart()">
+                                    <div class="btn check-out-btn"><i class="fa fa-shopping-cart"></i>                                       
+                                        <router-link class="btn check-out-btn"  @click="scrollToTop()" to="/thank">Checkout</router-link>
+                                    </div>
+                                    <button class="btn cancel-btn" @click="CancelBtn()">
                                         Cancel</button>
                                 </div>
                             </div>
@@ -160,17 +160,17 @@ export default {
 
             console.log(item);
         },
-        removeFromCart(item) {
-            this.$store.commit('removeFromCart', item);
+        DeleteCartItem(item) {
+            this.$store.commit('DeleteCartItem', item);
         },
-        decrementQuentity(item) {
-            this.$store.commit('decrementQuentity', item);
+        MinusQuantity(item) {
+            this.$store.commit('MinusQuantity', item);
         },
-        incrementQuentity(item) {
-            this.$store.commit('incrementQuentity', item);
+        PlusQuantity(item) {
+            this.$store.commit('PlusQuantity', item);
         },
-        resetCart() {
-            this.$store.commit('resetCart');
+        CancelBtn() {
+            this.$store.commit('CancelBtn');
         }
     },
     created(){
@@ -389,7 +389,9 @@ export default {
         position: absolute;
         margin-top: 55px;
         padding-left: 160px;
+
     }
+
 
     .cal-total {
         display: none;
