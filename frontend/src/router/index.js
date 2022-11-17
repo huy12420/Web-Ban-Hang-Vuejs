@@ -8,8 +8,6 @@ import Cart from '../pages/Cart.vue';
 import Checkout from '../pages/Checkout.vue';
 import Thank from '../pages/Thank.vue';
 import MyOrder from '../pages/MyOrder.vue';
-import Admin from '../admin/Admin.vue';
-import Dashboard from '../admin/Dashboard.vue';
 
 
 
@@ -54,16 +52,7 @@ const routes = [{
         name: "MyOrder",
         component: MyOrder,
     },
-    {
-        path: "/admin",
-        name: "Admin",
-        component: Admin,
-    },
-    {
-        path: "/admin/dashboard",
-        name: "Dashboard",
-        component: Dashboard,
-    },
+
     {
         path: '/:pathMatch(.*)*',
         component: Home,

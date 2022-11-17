@@ -68,28 +68,11 @@ const vNone = {
     color: #27ae60 !important;
     top: 20px;
     display: inline-block;
-    -webkit-animation: bounce 0.3s ease infinite alternate;
     font-size: 80px;
     color: #fff;
     text-shadow: 0 1px 0 #20884b, 0 2px 0 #20884b, 0 3px 0 #20884b, 0 4px 0 #20884b,
         0 5px 0 #20884b, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
         0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
-}
-
-.thank-container h1 p span:nth-child(2) {
-    -webkit-animation-delay: 0.1s;
-}
-
-.thank-container h1 p span:nth-child(3) {
-    -webkit-animation-delay: 0.2s;
-}
-
-.thank-container h1 p span:nth-child(4) {
-    -webkit-animation-delay: 0.3s;
-}
-
-.thank-container h1 p span:nth-child(5) {
-    -webkit-animation-delay: 0.4s;
 }
 
 .thank-letter {
@@ -105,14 +88,7 @@ const vNone = {
     margin-top: 20px;
 }
 
-@-webkit-keyframes bounce {
-    100% {
-        top: -20px;
-        text-shadow: 0 1px 0 #20884b, 0 2px 0 #20884b, 0 3px 0 #20884b, 0 4px 0 #20884b,
-            0 5px 0 #20884b, 0 6px 0 #20884b, 0 7px 0 #20884b, 0 8px 0 #20884b, 0 9px 0 #20884b,
-            0 50px 25px rgba(0, 0, 0, 0.2);
-    }
-}
+
 
 @media (max-width: 1024px) {
     .thank-container {
