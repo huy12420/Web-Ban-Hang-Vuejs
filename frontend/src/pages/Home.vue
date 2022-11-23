@@ -5,7 +5,7 @@
                 <span>Pure Quality</span>
                 <h3>Luxury Experiences </h3>
                 <p>Rave Like You Are Five</p>
-                <router-link @click="scrollToTop()" to="/men" class="btn">order now</router-link>
+                <router-link @click="scrollToTop()" to="/Item" class="btn">order now</router-link>
             </div>
             <div class="image">
                 <img src="../assets/images/b.jpg" alt="" class="home-img">

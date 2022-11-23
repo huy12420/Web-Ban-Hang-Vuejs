@@ -1,9 +1,5 @@
-// using nodemon so that you do not need to type node index.js every time new code saved
-// import body-parser - helps to parse the request and create the req.body object
-// import bodyParser from "body-parser";
 import express from "express";
-
-// import cors - provides Express middleware to enable CORS with various options, connect frontend
+// import cors 
 import cors from "cors";
 
 // import routes

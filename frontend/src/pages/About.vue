@@ -42,7 +42,7 @@
                 In the mid-‘60s, the brand introduced luxury accessories such as eyewear,
                 watches and jewelry to their product line; items which have since become a cornerstone of the label.
             </p>
-            <p> <i> <b> When Money Take Over  </b></i></p>
+            <p> <i> <b> When Money Take Over </b></i></p>
             <p>
                 In 1983, Rodolfo Gucci passed away, and control was passed to his son, Maurizio,
                 who struggled to maintain Gucci’s successes. During this period,
@@ -66,9 +66,9 @@
                 irrelevant, with a lot of talk about who would replace her. The brand surprised their audience when, in
                 2015, it was announced that Alessandro Michele would take over as creative director of the brand.
             </p>
-         
-              <p>  <i> <b> The Inheritance Of Legacy </b></i></p>
-          
+
+            <p> <i> <b> The Inheritance Of Legacy </b></i></p>
+
             <p>
                 Though Michele had worked for Gucci in various roles for 12 years, he was still relatively unknown as a
                 designer, and it was not clear in what direction he would take the brand. However, Michele’s unique
@@ -191,13 +191,15 @@ export default {
     font-size: 32px;
     color: white;
 }
-.content-text { 
+
+.content-text {
     font-size: 20px;
     padding-top: 30px;
     margin: auto;
     font-family: 'Satisfy', cursive;
 }
-.content-text p i { 
+
+.content-text p i {
     font-size: 35px;
     font-family: 'Satisfy', cursive;
     padding: 5px;
