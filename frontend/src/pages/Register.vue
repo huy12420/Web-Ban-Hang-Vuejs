@@ -97,16 +97,7 @@ export default {
             window.scrollTo(0, 0);
         },
 
-        availableTime: function () {
-            var now = new Date();
-            var day = ("0" + now.getDate()).slice(-2);
-            var currentMonth = ("0" + (now.getMonth() + 1)).slice(-2);
-            var minRange = (now.getFullYear() - 150) + "-" + currentMonth + "-" + day;
-            var maxRange = now.getFullYear() + "-" + currentMonth + "-" + day;
-
-            document.getElementById("uBirth").setAttribute("min", minRange);
-            document.getElementById("uBirth").setAttribute("max", maxRange);
-        },
+       
 
         resetCheckErr: function () {
             this.errorObj.nameErr = [];
@@ -185,19 +176,13 @@ export default {
                 this.errorObj.birthErr.push("Entering birthday is required");
             }
             else {
-                let minRange = document.getElementById("uBirth").getAttribute("min");
-                let maxRange = document.getElementById("uBirth").getAttribute("max");
-                let dateMin = new Date(minRange);
-                let dateMax = new Date(maxRange);
+            
                 let dateInput = new Date(this.registerObj.birth);
-
                 if (dateInput === "Invalid Date") {
                     this.errorObj.birthErr.push("Invalid date input");
                 }
 
-                if (dateInput.getTime() < dateMin.getTime() || dateInput.getTime() > dateMax.getTime()) {
-                    this.errorObj.birthErr.push("Available birthday range is from pass 150 years to now");
-                }
+              
             }
 
             // Gender validate

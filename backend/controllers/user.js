@@ -7,11 +7,11 @@ import {
 } from "../models/UserModel.js";
 
 // get all Users
-export const allUsers=(req,res)=>{
-    getAllUser((err,results)=> {
+export const allUsers = (req, res) => {
+    getAllUser((err, results) => {
         if (err) {
             res.send(err);
-        }else {
+        } else {
             res.json(results);
         }
     });
@@ -19,28 +19,24 @@ export const allUsers=(req,res)=>{
 
 
 // get single user
-export const showAUser = (req,res)=>{
-    getUserByEmail(req.params.email,(err,results)=> {
+export const showAUser = (req, res) => {
+    getUserByEmail(req.params.email, (err, results) => {
         if (err) {
             res.send(err);
-        }else {
+        } else {
             res.json(results);
         }
     });
 };
 
 // create user
-export const createAccount=(req,res)=>{
+export const createAccount = (req, res) => {
     const data = req.body;
-    insertUser(data,(err,results)=> {
+    insertUser(data, (err, results) => {
         if (err) {
             res.send(err);
-        }else {
+        } else {
             res.json(results);
         }
     });
 };
-
-
-
-

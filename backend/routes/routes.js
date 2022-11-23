@@ -28,14 +28,6 @@ router.get("/api/items/:id", showItemById);
 ////////////////////////// USER ////////////////////////////////
 // get all user
 router.get("/api/users/:email", showAUser);
-
 // create account
 router.post("/api/users/", createAccount);
-
-
-
-////////////////////////// CART ////////////////////////////////
-// add to cart
-
-
 export default router;

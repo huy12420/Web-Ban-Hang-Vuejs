@@ -147,7 +147,7 @@ export default {
     methods: {
         async CheckOutProducts() {
             try {
-                console.log("hehe")
+                console.log("Checked")
             } catch (error) {
                 alert(error);
             }
