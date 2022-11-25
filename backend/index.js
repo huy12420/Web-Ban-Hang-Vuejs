@@ -1,10 +1,12 @@
+// import express
 import express from "express";
 // import cors 
 import cors from "cors";
-
+// import multer
+import multer from "multer";
 // import routes
 import router from "./routes/routes.js";
-import multer from "multer";
+
 import path from "path";
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(

@@ -17,9 +17,6 @@ const store = createStore({
         setUser(state, payload) {
             state.user = payload;
         },
-        setAdmin(state, payload) {
-            state.admin = payload;
-        },
         addToCart(state, item) {
             let found = state.cart.find(product => product.item_id == item.item_id);
 

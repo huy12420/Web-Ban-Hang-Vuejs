@@ -5,7 +5,6 @@ import Home from '../pages/Home.vue';
 import About from '../pages/About.vue';
 import Item from '../pages/Item.vue';
 import Cart from '../pages/Cart.vue';
-import Checkout from '../pages/Checkout.vue';
 import Thank from '../pages/Thank.vue';
 import MyOrder from '../pages/MyOrder.vue';
 
@@ -36,11 +35,6 @@ const routes = [{
         path: "/register",
         name: "Register",
         component: Register,
-    },
-    {
-        path: "/checkout",
-        name: "Checkout",
-        component: Checkout,
     },
     {
         path: "/thank",

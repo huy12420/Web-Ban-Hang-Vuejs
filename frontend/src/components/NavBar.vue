@@ -15,7 +15,7 @@
                 <div class="fas fa-shopping-cart cart"></div>
             </router-link>
 
-            <div v-if="!user" class="fas fa-user account" @click="showLog">
+            <div v-if="!user" class="fas fa-user account" >
                 <ul class="drop-down-select">
                     <li>
                         <router-link @click="scrollToTop()" to="/login">login</router-link>
@@ -27,7 +27,7 @@
 
             </div>
 
-            <div v-else class="fas fa-user account" style="background: #f38609;color: white;" @click="showLog">
+            <div v-else class="fas fa-user account" style="background: #f38609;color: white;" >
                 <ul class="drop-down-select">
                     <li>
                         <router-link @click="handleLogout" to="/">logout</router-link>

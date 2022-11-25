@@ -12,7 +12,9 @@ import {
     showAUser,
     createAccount
 } from "../controllers/user.js";
-
+import {
+    createCart
+} from "../controllers/cart.js";
 
 
 // init express router
@@ -30,4 +32,7 @@ router.get("/api/items/:id", showItemById);
 router.get("/api/users/:email", showAUser);
 // create account
 router.post("/api/users/", createAccount);
+//////////////////////// Cart /////////////////////////////////
+//insert item to cart
+router.post("/api/carts/", createCart);
 export default router;

@@ -87,9 +87,9 @@
                                 <h2 class="font-bold total-sale"> {{ totalPrice }}</h2>
 
                                 <div class="btn-group">
-                                    <div class="btn check-out-btn"><i class="fa fa-shopping-cart"></i>
-                                        <router-link class="btn check-out-btn" @click="scrollToTop()" to="/myorder">
-                                            Checkout</router-link>
+                                    <div class="btn check-out-btn"><i class="fa fa-shopping-cart" ></i>
+                                        <router-link class="btn check-out-btn" @click="CheckOutProducts()"
+                                             to="/myorder"> Checkout </router-link>
                                     </div>
                                     <button class="btn cancel-btn" @click="CancelBtn()">
                                         Cancel</button>
@@ -116,17 +116,15 @@
 </template>
 <script>
 
-
+import axios from 'axios';
 export default {
     name: "Cart",
     data() {
         return {
+            total: 0,
             cartData: {
-                uid: '',
+                user_id: '',
                 user_name: '',
-                user_address: '',
-                user_phone: '',
-                created_date: '',
                 cart: '',
                 total: 0,
                 valid: false,
@@ -135,8 +133,7 @@ export default {
     },
     computed: {
         totalPrice() {
-            let total = 0;
-
+            var total = 0;
             for (let item of this.$store.state.cart) {
                 total += parseInt(item.item_total);
             }
@@ -147,7 +144,12 @@ export default {
     methods: {
         async CheckOutProducts() {
             try {
-                console.log("Checked")
+                var data = { dataItems: this.$store.state.cart, TOTAL_DIFFER_ITEMM: this.$store.state.cart.length, TOTAL_PRICE: this.totalPrice}
+                var sendMessage = await axios.post("/carts/", data);
+                if(sendMessage.status == 200){
+                    alert("Item has been added ");
+                }
+                
             } catch (error) {
                 alert(error);
             }
@@ -170,9 +172,6 @@ export default {
             this.$store.commit('CancelBtn');
         }
     },
-    created() {
-        console.log(this.$store.state.cart)
-    }
 }
 </script>
 <style scoped>
