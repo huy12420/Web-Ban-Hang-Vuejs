@@ -21,7 +21,7 @@
             <p v-none>
                 We have just confirmed you received your order, and hope you are enjoying it.
                 Every
-                item is handmade by our team, with care to the details, so we can always provide you with the best
+                item is handmade by our CORP, with care to the details, so we can always provide you with the best
                 experience.
             </p>
             <router-link class="btn" to="/menu">Continue Shopping</router-link>
