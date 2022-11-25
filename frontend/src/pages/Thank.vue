@@ -36,7 +36,6 @@ export default {
 }
 </script>
 <script setup>
-// enables v-focus in templates
 const vNone = {
     mounted(el) {
         el.style.textTransform = "none";

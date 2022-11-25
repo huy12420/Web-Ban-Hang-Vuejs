@@ -6,7 +6,6 @@ const store = createStore({
         return {
             allItems: [],
             user: undefined,
-            admin: undefined,
             cart: cart ? JSON.parse(cart) : [],
         }
     },
