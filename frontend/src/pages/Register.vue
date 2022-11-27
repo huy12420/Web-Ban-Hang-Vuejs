@@ -211,7 +211,9 @@ export default {
                         user_birth: this.registerObj.birth,
                         user_gender: this.registerObj.gender
                     }
+                    
                     await axios.post("/users/", data);
+
                     this.$router.push("/login");
                 }
             }

@@ -4,12 +4,10 @@ import express from "express";
 import {
     showItems,
     showItemById,
-
-
 } from "../controllers/item.js";
 
 import {
-    showAUser,
+    showUser,
     createAccount
 } from "../controllers/user.js";
 import {
@@ -29,10 +27,19 @@ router.get("/api/items/:id", showItemById);
 
 ////////////////////////// USER ////////////////////////////////
 // get all user
-router.get("/api/users/:email", showAUser);
+router.get("/api/users/:email", showUser);
+
+
 // create account
 router.post("/api/users/", createAccount);
+
+
+
 //////////////////////// Cart /////////////////////////////////
 //insert item to cart
 router.post("/api/carts/", createCart);
+
+
+
+
 export default router;

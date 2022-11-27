@@ -145,7 +145,10 @@ export default {
         async CheckOutProducts() {
             try {
                 var data = { dataItems: this.$store.state.cart, TOTAL_DIFFER_ITEMM: this.$store.state.cart.length, TOTAL_PRICE: this.totalPrice}
+
                 var sendMessage = await axios.post("/carts/", data);
+                
+                
                 if(sendMessage.status == 200){
                     alert("Item has been added ");
                 }

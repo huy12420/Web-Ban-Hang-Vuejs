@@ -98,13 +98,15 @@ export default {
     transition: all .25s;
 }
 
-.home-main .image:nth-child(7n+1) { 
+.home-main .image:nth-child(7n+1) {
     grid-column: 2 / span 2;
 }
+
 .home-main .image:hover {
     z-index: 2;
     transform: scale(2);
 }
+
 .home-main .image .home-img {
     width: 100%;
     margin-top: 5rem;
@@ -290,10 +292,12 @@ export default {
     padding: 2rem;
 
 }
-.home-about .content .icons-container .icons:hover { 
+
+.home-about .content .icons-container .icons:hover {
     background-color: grey;
 
 }
+
 .home-about .content .icons-container .icons {
     height: 150%;
     width: 200%;

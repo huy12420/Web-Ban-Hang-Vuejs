@@ -15,7 +15,7 @@
                 <div class="fas fa-shopping-cart cart"></div>
             </router-link>
 
-            <div v-if="!user" class="fas fa-user account" >
+            <div v-if="!user" class="fas fa-user account">
                 <ul class="drop-down-select">
                     <li>
                         <router-link @click="scrollToTop()" to="/login">login</router-link>
@@ -27,7 +27,7 @@
 
             </div>
 
-            <div v-else class="fas fa-user account" style="background: #f38609;color: white;" >
+            <div v-else class="fas fa-user account" style="background: #f38609;color: white;">
                 <ul class="drop-down-select">
                     <li>
                         <router-link @click="handleLogout" to="/">logout</router-link>
@@ -47,15 +47,15 @@ export default {
     computed: {
         ...mapState(["user"])
     },
-  
+
 
 
     methods: {
         ...mapMutations(["setUser"]),
-        
+
         scrollToTop() {
-        window.scrollTo(0, 0);
-    },
+            window.scrollTo(0, 0);
+        },
 
 
         handleLogout: function () {
@@ -163,9 +163,6 @@ export default {
     color: white;
 }
 
-/* .header .icons .account:hover .drop-down-select {
-    display: block;
-} */
 
 .header .icons .account:hover .drop-down-select a {
     background-color: #f7f7f7;

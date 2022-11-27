@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div v-if="admin">
+        <div v-if="user">
             <router-view></router-view>
         </div>
         <div v-else>

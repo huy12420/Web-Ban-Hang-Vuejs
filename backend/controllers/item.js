@@ -4,7 +4,6 @@ import {
     getItems,
     getItemById,
 } from "../models/ItemModel.js";
-
 // get all Items
 export const showItems = (req, res) => {
     getItems((err, results) => {
@@ -15,11 +14,9 @@ export const showItems = (req, res) => {
         }
     });
 };
-
-
 // get single Item
 export const showItemById = (req, res) => {
-    getItemById(req.params.id, (err, results) => {
+    getItemById(req.body.id, (err, results) => {
         if (err) {
             res.send(err);
         } else {
